@@ -1,0 +1,35 @@
+{
+  "name": "react-rejourney",
+  "version": "1.0.0",
+  "description": "This is my revision phase of react",
+  "scripts": {
+    "start": "parcel index.html",
+    "test": "jest",
+    "build": "parcel build index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/theconfusedhead/react.git"
+  },
+  "author": "theconfusedhead",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/theconfusedhead/react/issues"
+  },
+  "homepage": "https://github.com/theconfusedhead/react#readme",
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "parcel": "^2.13.2",
+    "postcss": "^8.4.49",
+    "process": "^0.11.10",
+    "tailwindcss": "^3.4.17"
+  },
+  "dependencies": {
+    "html2canvas": "^1.4.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "browsersList": [
+    "last 2 versions"
+  ]
+}
