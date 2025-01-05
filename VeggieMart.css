@@ -125,8 +125,10 @@
   background-color: #22c55e;
   padding: 16px;
   border-radius: 8px;
-  position: fixed;
-  left: -9999px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .chart-header {
@@ -149,7 +151,7 @@
   .chart-title {
     font-size: 36px;
   }
-  
+
   .chart-subtitle {
     font-size: 24px;
   }
@@ -194,4 +196,34 @@
 .vegetable-price {
   font-weight: bold;
   text-align: right;
+}
+
+/* Additions for mobile chart optimization */
+.mobile-chart-container * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.mobile-chart-container .price-row {
+  padding: 8px 0;
+  font-size: 12px;
+}
+
+.mobile-chart-container .price-row:last-child {
+  border-bottom: none;
+}
+
+.mobile-chart-container .chart-title {
+  font-size: 24px;
+}
+
+.mobile-chart-container .chart-subtitle {
+  font-size: 18px;
+}
+
+.mobile-chart-container .price-chart {
+  border-radius: 8px;
+  padding: 12px;
+  box-shadow: none;
 }

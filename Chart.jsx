@@ -38,25 +38,24 @@ const VeggieMart = () => {
     try {
       setIsDownloading(true);
 
-      // Hide the preview chart and show the mobile version temporarily
+      // Temporarily show the hidden chart
       if (chartRef.current) chartRef.current.style.display = "none";
       mobileChartRef.current.style.display = "block";
 
-      await new Promise((resolve) => setTimeout(resolve, 100));
+      // Wait for layout rendering
+      await new Promise((resolve) => setTimeout(resolve, 200));
 
       const canvas = await html2canvas(mobileChartRef.current, {
-        scale: 2,
+        scale: 3,
         useCORS: true,
         backgroundColor: "#22c55e",
-        width: 400, // Mobile-optimized width
-        height: 800, // Mobile-optimized height
-        logging: true,
       });
 
-      // Restore display states
+      // Restore original states
       if (chartRef.current) chartRef.current.style.display = "block";
       mobileChartRef.current.style.display = "none";
 
+      // Download the generated image
       const link = document.createElement("a");
       link.href = canvas.toDataURL("image/png");
       link.download = `veggie-prices-${
