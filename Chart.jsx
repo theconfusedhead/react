@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import html2canvas from "html2canvas"; // Changed to regular import
+import html2canvas from "html2canvas";
 import "./VeggieMart.css";
 
 const vegetables = [
@@ -23,6 +23,7 @@ const VeggieMart = () => {
   const [prices, setPrices] = useState({});
   const [isDownloading, setIsDownloading] = useState(false);
   const chartRef = useRef(null);
+  const mobileChartRef = useRef(null);
 
   const handlePriceChange = (vegetable, value) => {
     setPrices((prev) => ({
@@ -32,22 +33,30 @@ const VeggieMart = () => {
   };
 
   const downloadChart = async () => {
-    if (!chartRef.current) return;
+    if (!mobileChartRef.current) return;
 
     try {
       setIsDownloading(true);
 
-      // Add a small delay to ensure styles are fully applied
+      // Hide the preview chart and show the mobile version temporarily
+      if (chartRef.current) chartRef.current.style.display = "none";
+      mobileChartRef.current.style.display = "block";
+
       await new Promise((resolve) => setTimeout(resolve, 100));
 
-      const canvas = await html2canvas(chartRef.current, {
-        scale: 2, // Higher quality
+      const canvas = await html2canvas(mobileChartRef.current, {
+        scale: 2,
         useCORS: true,
         backgroundColor: "#22c55e",
-        logging: true, // For debugging
+        width: 400, // Mobile-optimized width
+        height: 800, // Mobile-optimized height
+        logging: true,
       });
 
-      // Create a temporary link and trigger download
+      // Restore display states
+      if (chartRef.current) chartRef.current.style.display = "block";
+      mobileChartRef.current.style.display = "none";
+
       const link = document.createElement("a");
       link.href = canvas.toDataURL("image/png");
       link.download = `veggie-prices-${
@@ -65,10 +74,11 @@ const VeggieMart = () => {
   };
 
   return (
-    <div className="container">
+    <div className="app-container">
+      {/* Form Section */}
       <div className="form-section">
         <h2 className="form-title">Update Prices</h2>
-        <div className="form-grid">
+        <div className="price-form">
           {vegetables.map((veg) => (
             <div key={veg.name} className="form-row">
               <label className="form-label">{veg.name}:</label>
@@ -91,6 +101,7 @@ const VeggieMart = () => {
         </button>
       </div>
 
+      {/* Preview Chart */}
       <div ref={chartRef} className="chart-container">
         <div className="chart-header">
           <h1 className="chart-title">VEGGIEMART</h1>
@@ -98,7 +109,30 @@ const VeggieMart = () => {
         </div>
 
         <div className="price-chart">
-          {vegetables.map((veg, index) => (
+          {vegetables.map((veg) => (
+            <div key={veg.name} className="price-row">
+              <div className="vegetable-name">
+                <span>
+                  {veg.name} | {veg.hindi}
+                </span>
+              </div>
+              <div className="vegetable-price">
+                {prices[veg.name] ? `₹${prices[veg.name]}` : ""}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Hidden Mobile-Optimized Chart for Download */}
+      <div ref={mobileChartRef} className="mobile-chart-container">
+        <div className="chart-header">
+          <h1 className="chart-title">VEGGIEMART</h1>
+          <h2 className="chart-subtitle">Today's Rate Chart</h2>
+        </div>
+
+        <div className="price-chart">
+          {vegetables.map((veg) => (
             <div key={veg.name} className="price-row">
               <div className="vegetable-name">
                 <span>
