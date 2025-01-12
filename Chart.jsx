@@ -40,7 +40,7 @@ const fruitsAndDairy = [
   { name: "Mosambi", hindi: "मौसंबी", unit: "kg" },
   { name: "Chiku", hindi: "चीकू", unit: "kg" },
   { name: "Bread", hindi: "ब्रेड", unit: "pack" },
-  { name: "Amul Milk", hindi: "अमूल मिल्क", unit: "1 ltr" },
+  { name: "Amul Milk", hindi: "अमूल मिल्क", unit: "ltr" },
   { name: "Dahi", hindi: "दही", unit: "pack" },
 ];
 
