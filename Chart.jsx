@@ -5,39 +5,43 @@ import Logo from "./img/veggie-mart.png";
 
 const vegetables = [
   // First Column
-  { name: "Aloo", hindi: "आलू" },
-  { name: "Pyaaz", hindi: "प्याज" },
-  { name: "Tamatar", hindi: "टमाटर" },
-  { name: "Adrak", hindi: "अदरक" },
-  { name: "Lasun", hindi: "लहसुन" },
-  { name: "Hari Mirch", hindi: "हरी मिर्च" },
-  { name: "Bhindi", hindi: "भिंडी" },
-  { name: "Patta Gobi", hindi: "पत्ता गोभी" },
-  { name: "Phool Gobi", hindi: "फूल गोभी" },
-  { name: "Palak", hindi: "पालक" },
+  { name: "Aloo", hindi: "आलू", unit: "kg" },
+  { name: "Pyaaz", hindi: "प्याज", unit: "kg" },
+  { name: "Tamatar", hindi: "टमाटर", unit: "kg" },
+  { name: "Adrak", hindi: "अदरक", unit: "kg" },
+  { name: "Lasun", hindi: "लहसुन", unit: "kg" },
+  { name: "Hari Mirch", hindi: "हरी मिर्च", unit: "kg" },
+  { name: "Bhindi", hindi: "भिंडी", unit: "kg" },
+  { name: "Patta Gobi", hindi: "पत्ता गोभी", unit: "kg" },
+  { name: "Phool Gobi", hindi: "फूल गोभी", unit: "kg" },
+  { name: "Palak", hindi: "पालक", unit: "kg" },
 ].map((item) => ({ ...item, category: "veg1" }));
 
 const vegetables2 = [
   // Second Column
-  { name: "Methi", hindi: "मेथी" },
-  { name: "Gajar", hindi: "गाजर" },
-  { name: "Loki", hindi: "लौकी" },
-  { name: "Dhaniya", hindi: "धनिया" },
-  { name: "Mirchi", hindi: "मिर्च" },
-  { name: "Beans", hindi: "बीन्स" },
-  { name: "Karela", hindi: "करेला" },
-  { name: "Arbi", hindi: "अरबी" },
-  { name: "Matar", hindi: "मटर" },
+  { name: "Methi", hindi: "मेथी", unit: "kg" },
+  { name: "Gajar", hindi: "गाजर", unit: "kg" },
+  { name: "Loki", hindi: "लौकी", unit: "kg" },
+  { name: "Dhaniya", hindi: "धनिया", unit: "kg" },
+  { name: "Mirchi", hindi: "मिर्च", unit: "kg" },
+  { name: "Beans", hindi: "बीन्स", unit: "kg" },
+  { name: "Karela", hindi: "करेला", unit: "kg" },
+  { name: "Arbi", hindi: "अरबी", unit: "kg" },
+  { name: "Matar", hindi: "मटर", unit: "kg" },
+  { name: "Nimbu", hindi: "नींबू", unit: "piece" },
 ].map((item) => ({ ...item, category: "veg2" }));
 
-const fruits = [
-  { name: "Apple", hindi: "सेब" },
-  { name: "Kela", hindi: "केला" },
-  { name: "Anaar", hindi: "अनार" },
-  { name: "Amruth", hindi: "अमरूद" },
-  { name: "Papita", hindi: "पपीता" },
-  { name: "Mosambi", hindi: "मौसंबी" },
-  { name: "Chiku", hindi: "चीकू" },
+const fruitsAndDairy = [
+  { name: "Apple", hindi: "सेब", unit: "kg" },
+  { name: "Kela", hindi: "केला", unit: "kg" },
+  { name: "Anaar", hindi: "अनार", unit: "kg" },
+  { name: "Amruth", hindi: "अमरूद", unit: "kg" },
+  { name: "Papita", hindi: "पपीता", unit: "kg" },
+  { name: "Mosambi", hindi: "मौसंबी", unit: "kg" },
+  { name: "Chiku", hindi: "चीकू", unit: "kg" },
+  { name: "Bread", hindi: "ब्रेड", unit: "pack" },
+  { name: "Amul Milk", hindi: "अमूल मिल्क", unit: "1 ltr" },
+  { name: "Dahi", hindi: "दही", unit: "pack" },
 ];
 
 const VeggieMart = () => {
@@ -76,11 +80,16 @@ const VeggieMart = () => {
     }
   };
 
+  const renderPriceWithUnit = (item, price) => {
+    if (!price) return "";
+    return `₹${price}/${item.unit}`;
+  };
+
   return (
     <div className="app-container">
       <h2 className="form-title">VeggieMart Price Chart</h2>
       <div className="price-form">
-        {[...vegetables, ...vegetables2, ...fruits].map((item) => (
+        {[...vegetables, ...vegetables2, ...fruitsAndDairy].map((item) => (
           <div key={item.name} className="form-row">
             <label className="form-label">
               {item.hindi} ({item.name}):
@@ -104,7 +113,7 @@ const VeggieMart = () => {
       </button>
 
       <div ref={chartRef} className="chart-container">
-        {/* <div
+        <div
           className="chart-header"
           style={{
             display: "flex",
@@ -114,77 +123,20 @@ const VeggieMart = () => {
             padding: "20px",
             backgroundColor: "#ffffff",
             borderRadius: "10px",
-            boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
-            border: "1px solid #e0e0e0",
             textAlign: "center",
           }}
         >
           <h1
             className="chart-title"
             style={{
-              fontSize: "30px",
-              color: "#28a745",
               margin: "0",
-              fontWeight: "bold",
-              textTransform: "uppercase",
-              letterSpacing: "1.5px",
             }}
           >
             <img
               src={Logo}
               alt="VeggieMart Logo"
               style={{
-                width: "70px",
-                height: "70px",
-                marginBottom: "10px",
-              }}
-            />
-          
-          </h1>
-          <h2
-            className="chart-subtitle"
-            style={{
-              fontSize: "16px",
-              color: "#555",
-              margin: "10px 0 0 0",
-              fontWeight: "500",
-            }}
-          >
-            Today's Rate Chart (
-            {new Date().toLocaleDateString("en-GB", {
-              day: "2-digit",
-              month: "short",
-              year: "numeric",
-            })}
-            )
-          </h2>
-        </div> */}
-
-        <div
-          className="chart-header"
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            padding: "20px",
-            backgroundColor: "#ffffff", // Ensure the background contrasts the logo
-            borderRadius: "10px",
-            textAlign: "center",
-          }}
-        >
-          <h1
-            className="chart-title"
-            style={{
-              margin: "0", // Removes extra margin
-            }}
-          >
-            <img
-              src={Logo}
-              alt="VeggieMart Logo"
-              style={{
-                // width: "70px",
-                height: "116px;",
+                height: "116px",
               }}
             />
           </h1>
@@ -194,7 +146,7 @@ const VeggieMart = () => {
               fontSize: "16px",
               color: "#555",
               margin: "0",
-              marginTop: "10px", // Adds space between image and text
+              marginTop: "10px",
               fontWeight: "normal",
             }}
           >
@@ -217,7 +169,7 @@ const VeggieMart = () => {
                   {veg.hindi} ({veg.name})
                 </span>
                 <span className="price">
-                  {prices[veg.name] ? `₹${prices[veg.name]}/-` : ""}
+                  {renderPriceWithUnit(veg, prices[veg.name])}
                 </span>
               </div>
             ))}
@@ -230,20 +182,20 @@ const VeggieMart = () => {
                   {veg.hindi} ({veg.name})
                 </span>
                 <span className="price">
-                  {prices[veg.name] ? `₹${prices[veg.name]}/-` : ""}
+                  {renderPriceWithUnit(veg, prices[veg.name])}
                 </span>
               </div>
             ))}
           </div>
           <div className="chart-column">
-            <h3 className="column-title">फल / Fruits</h3>
-            {fruits.map((fruit) => (
-              <div key={fruit.name} className="price-row">
+            <h3 className="column-title" style={{whiteSpace: 'nowrap'}}>फल और डेयरी / Fruits & Dairy</h3>
+            {fruitsAndDairy.map((item) => (
+              <div key={item.name} className="price-row">
                 <span className="item-name">
-                  {fruit.hindi} ({fruit.name})
+                  {item.hindi} ({item.name})
                 </span>
                 <span className="price">
-                  {prices[fruit.name] ? `₹${prices[fruit.name]}/-` : ""}
+                  {renderPriceWithUnit(item, prices[item.name])}
                 </span>
               </div>
             ))}
