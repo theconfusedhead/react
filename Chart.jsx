@@ -32,7 +32,11 @@ const vegetables2 = [
 ].map((item) => ({ ...item, category: "veg2" }));
 
 const fruitsAndDairy = [
-  { name: "Apple", hindi: "सेब", unit: "kg" },
+  { name: "Apple Green", hindi: "हरा सेब", unit: "kg" },
+  { name: "Apple Gala", hindi: "गाला सेब", unit: "kg" },
+  { name: "Kashmiri Apple", hindi: "कश्मीरी सेब", unit: "kg" },
+  { name: "Grapes Green", hindi: "हरा अंगूर", unit: "kg" },
+  { name: "Grapes Black", hindi: "काला अंगूर", unit: "kg" },
   { name: "Kela", hindi: "केला", unit: "kg" },
   { name: "Anaar", hindi: "अनार", unit: "kg" },
   { name: "Amruth", hindi: "अमरूद", unit: "kg" },
@@ -164,7 +168,11 @@ const VeggieMart = () => {
           <div className="chart-column">
             <h3 className="column-title">सब्जियां / Vegetables</h3>
             {vegetables.map((veg) => (
-              <div key={veg.name} className="price-row">
+              <div
+                key={veg.name}
+                className="price-row"
+                style={{ whiteSpace: "nowrap" }}
+              >
                 <span className="item-name">
                   {veg.hindi} ({veg.name})
                 </span>
@@ -174,10 +182,15 @@ const VeggieMart = () => {
               </div>
             ))}
           </div>
+
           <div className="chart-column">
             <h3 className="column-title">सब्जियां / Vegetables</h3>
             {vegetables2.map((veg) => (
-              <div key={veg.name} className="price-row">
+              <div
+                key={veg.name}
+                className="price-row"
+                style={{ whiteSpace: "nowrap" }}
+              >
                 <span className="item-name">
                   {veg.hindi} ({veg.name})
                 </span>
@@ -188,9 +201,15 @@ const VeggieMart = () => {
             ))}
           </div>
           <div className="chart-column">
-            <h3 className="column-title" style={{whiteSpace: 'nowrap'}}>फल और डेयरी / Fruits & Dairy</h3>
+            <h3 className="column-title" style={{ whiteSpace: "nowrap" }}>
+              फल और डेयरी / Fruits & Dairy
+            </h3>
             {fruitsAndDairy.map((item) => (
-              <div key={item.name} className="price-row">
+              <div
+                key={item.name}
+                className="price-row"
+                style={{ whiteSpace: "nowrap" }}
+              >
                 <span className="item-name">
                   {item.hindi} ({item.name})
                 </span>
