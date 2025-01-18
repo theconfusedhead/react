@@ -4,52 +4,56 @@ import "./VeggieMart.css";
 import Logo from "./img/veggie-mart.png";
 
 const vegetables = [
-  // First Column
-  { name: "Aloo", hindi: "आलू", unit: "kg" },
-  { name: "Pyaaz", hindi: "प्याज", unit: "kg" },
-  { name: "Tamatar", hindi: "टमाटर", unit: "kg" },
-  { name: "Adrak", hindi: "अदरक", unit: "kg" },
-  { name: "Lasun", hindi: "लहसुन", unit: "kg" },
-  { name: "Hari Mirch", hindi: "हरी मिर्च", unit: "kg" },
-  { name: "Bhindi", hindi: "भिंडी", unit: "kg" },
-  { name: "Patta Gobi", hindi: "पत्ता गोभी", unit: "kg" },
-  { name: "Phool Gobi", hindi: "फूल गोभी", unit: "kg" },
-  { name: "Palak", hindi: "पालक", unit: "kg" },
+  { name: "Aloo", hindi: "आलू", unit: "kg", price: "24" },
+  { name: "Pyaaz", hindi: "प्याज", unit: "kg", price: "28" },
+  { name: "Tamatar", hindi: "टमाटर", unit: "kg", price: "14" },
+  { name: "Adrak", hindi: "अदरक", unit: "kg", price: "49" },
+  { name: "Lasun", hindi: "लहसुन", unit: "kg", price: "299" },
+  { name: "Hari Mirch", hindi: "हरी मिर्च", unit: "kg", price: "65" },
+  { name: "Bhindi", hindi: "भिंडी", unit: "kg", price: "79" },
+  { name: "Patta Gobi", hindi: "पत्ता गोभी", unit: "kg", price: "14" },
+  { name: "Phool Gobi", hindi: "फूल गोभी", unit: "kg", price: "20" },
+  { name: "Palak", hindi: "पालक", unit: "kg", price: "10" },
 ].map((item) => ({ ...item, category: "veg1" }));
 
 const vegetables2 = [
-  // Second Column
-  { name: "Methi", hindi: "मेथी", unit: "kg" },
-  { name: "Gajar", hindi: "गाजर", unit: "kg" },
-  { name: "Loki", hindi: "लौकी", unit: "kg" },
-  { name: "Dhaniya", hindi: "धनिया", unit: "kg" },
-  { name: "Mirchi", hindi: "मिर्च", unit: "kg" },
-  { name: "Beans", hindi: "बीन्स", unit: "kg" },
-  { name: "Karela", hindi: "करेला", unit: "kg" },
-  { name: "Arbi", hindi: "अरबी", unit: "kg" },
-  { name: "Matar", hindi: "मटर", unit: "kg" },
-  { name: "Nimbu", hindi: "नींबू", unit: "piece" },
+  { name: "Methi", hindi: "मेथी", unit: "kg", price: "10" },
+  { name: "Gajar", hindi: "गाजर", unit: "kg", price: "29" },
+  { name: "Loki", hindi: "लौकी", unit: "kg", price: "26" },
+  { name: "Dhaniya", hindi: "धनिया", unit: "kg", price: "28" },
+  { name: "Mirchi", hindi: "मिर्च", unit: "kg", price: "60" },
+  { name: "Beans", hindi: "बीन्स", unit: "kg", price: "59" },
+  { name: "Karela", hindi: "करेला", unit: "kg", price: "59" },
+  { name: "Arbi", hindi: "अरबी", unit: "kg", price: "69" },
+  { name: "Matar", hindi: "मटर", unit: "kg", price: "49" },
+  { name: "Nimbu", hindi: "नींबू", unit: "piece", price: "5" },
 ].map((item) => ({ ...item, category: "veg2" }));
 
 const fruitsAndDairy = [
-  { name: "Apple Green", hindi: "हरा सेब", unit: "kg" },
-  { name: "Apple Gala", hindi: "गाला सेब", unit: "kg" },
-  { name: "Kashmiri Apple", hindi: "कश्मीरी सेब", unit: "kg" },
-  { name: "Grapes Green", hindi: "हरा अंगूर", unit: "kg" },
-  { name: "Grapes Black", hindi: "काला अंगूर", unit: "kg" },
-  { name: "Kela", hindi: "केला", unit: "kg" },
-  { name: "Anaar", hindi: "अनार", unit: "kg" },
-  { name: "Amruth", hindi: "अमरूद", unit: "kg" },
-  { name: "Papita", hindi: "पपीता", unit: "kg" },
-  { name: "Mosambi", hindi: "मौसंबी", unit: "kg" },
-  { name: "Chiku", hindi: "चीकू", unit: "kg" },
-  { name: "Bread", hindi: "ब्रेड", unit: "pack" },
-  { name: "Amul Milk", hindi: "अमूल मिल्क", unit: "ltr" },
-  { name: "Dahi", hindi: "दही", unit: "pack" },
+  { name: "Apple Green", hindi: "हरा सेब", unit: "kg", price: "299" },
+  { name: "Apple Gala", hindi: "गाला सेब", unit: "kg", price: "329" },
+  { name: "Kashmiri Apple", hindi: "कश्मीरी सेब", unit: "kg", price: "169" },
+  { name: "Grapes Green", hindi: "हरा अंगूर", unit: "kg", price: "165" },
+  { name: "Grapes Black", hindi: "काला अंगूर", unit: "kg", price: "195" },
+  { name: "Kela", hindi: "केला", unit: "kg", price: "38" },
+  { name: "Anaar", hindi: "अनार", unit: "kg", price: "189" },
+  { name: "Amruth", hindi: "अमरूद", unit: "kg", price: "59" },
+  { name: "Papita", hindi: "पपीता", unit: "kg", price: "36" },
+  { name: "Mosambi", hindi: "मौसंबी", unit: "kg", price: "49" },
+  { name: "Chiku", hindi: "चीकू", unit: "kg", price: "105" },
+  { name: "Bread", hindi: "ब्रेड", unit: "pack", price: "40" },
+  { name: "Amul Milk", hindi: "अमूल मिल्क", unit: "ltr", price: "64" },
+  { name: "Dahi", hindi: "दही", unit: "pack", price: "35" },
 ];
 
 const VeggieMart = () => {
-  const [prices, setPrices] = useState({});
+  // Initialize prices state with the prices from the data
+  const initialPrices = {};
+  [...vegetables, ...vegetables2, ...fruitsAndDairy].forEach((item) => {
+    initialPrices[item.name] = item.price;
+  });
+
+  const [prices, setPrices] = useState(initialPrices);
   const [isDownloading, setIsDownloading] = useState(false);
   const chartRef = useRef(null);
 
