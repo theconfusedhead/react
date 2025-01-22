@@ -14,6 +14,9 @@ const vegetables = [
   { name: "Patta Gobi", hindi: "पत्ता गोभी", unit: "kg", price: "14" },
   { name: "Phool Gobi", hindi: "फूल गोभी", unit: "kg", price: "20" },
   { name: "Palak", hindi: "पालक", unit: "kg", price: "10" },
+  { name: "Capsicum", hindi: "शिमला मिर्च", unit: "kg", price: "" },
+  { name: "Gawar Beans", hindi: "ग्वार फ़ली", unit: "kg", price: "" },
+  { name: "Barbati Beans", hindi: "बरबटी बीन्स", unit: "kg", price: "" },
 ].map((item) => ({ ...item, category: "veg1" }));
 
 const vegetables2 = [
@@ -21,12 +24,16 @@ const vegetables2 = [
   { name: "Gajar", hindi: "गाजर", unit: "kg", price: "29" },
   { name: "Loki", hindi: "लौकी", unit: "kg", price: "26" },
   { name: "Dhaniya", hindi: "धनिया", unit: "kg", price: "28" },
-  { name: "Mirchi", hindi: "मिर्च", unit: "kg", price: "60" },
+  { name: "Hari Pyaaz", hindi: "हरी प्याज़", unit: "kg", price: "60" },
   { name: "Beans", hindi: "बीन्स", unit: "kg", price: "59" },
   { name: "Karela", hindi: "करेला", unit: "kg", price: "59" },
   { name: "Arbi", hindi: "अरबी", unit: "kg", price: "69" },
   { name: "Matar", hindi: "मटर", unit: "kg", price: "49" },
   { name: "Nimbu", hindi: "नींबू", unit: "piece", price: "5" },
+  { name: "Muli", hindi: "मूली", unit: "piece", price: "5" },
+  { name: "Broccoli", hindi: "ब्रोकोली", unit: "kg", price: "" },
+  { name: "Beet Root", hindi: "चुकंदर", unit: "kg", price: "" },
+
 ].map((item) => ({ ...item, category: "veg2" }));
 
 const fruitsAndDairy = [
@@ -42,7 +49,7 @@ const fruitsAndDairy = [
   { name: "Mosambi", hindi: "मौसंबी", unit: "kg", price: "49" },
   { name: "Chiku", hindi: "चीकू", unit: "kg", price: "105" },
   { name: "Bread", hindi: "ब्रेड", unit: "pack", price: "40" },
-  { name: "Amul Milk", hindi: "अमूल मिल्क", unit: "ltr", price: "64" },
+  { name: "Amul Milk", hindi: "अमूल मिल्क", unit: "ltr", price: "66" },
   { name: "Dahi", hindi: "दही", unit: "pack", price: "35" },
 ];
 
@@ -175,7 +182,6 @@ const VeggieMart = () => {
               <div
                 key={veg.name}
                 className="price-row"
-                style={{ whiteSpace: "nowrap" }}
               >
                 <span className="item-name">
                   {veg.hindi} ({veg.name})
